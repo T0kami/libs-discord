@@ -1,7 +1,7 @@
 function getReactInstance(node) {
   	if (!node) return null;
   	return node[Object.keys(node).find((key) => key.startsWith("__reactInternalInstance"))];
-};
+}
 
 function getInstance(config) {
   	if (config === undefined) return null;
@@ -42,18 +42,18 @@ function getInstance(config) {
   		depth--;
   		return result;
   	}
-};
+}
 
 function sendMessage(element){
   		var press = new KeyboardEvent("keypress", {key: "Enter", code: "Enter", which: 13, keyCode: 13, bubbles: true});
   		Object.defineProperty(press, "keyCode", {value: 13});
   		Object.defineProperty(press, "which", {value: 13});
   		element.dispatchEvent(press);
-};
+}
 
 function addSyntaxColor(element, message, language){
 
     message = "```" + language + "\n" + message + "\n```";
     getInstance({"node":element, "name":"ChannelTextAreaForm", "up":true}).setState({textValue:message});
 
-};
+}
