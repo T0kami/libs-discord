@@ -55,5 +55,5 @@ function addSyntaxColor(element, message, language){
 
     message = "```" + language + "\n" + message + "\n```";
     getInstance({"node":element, "name":"ChannelTextAreaForm", "up":true}).setState({textValue:message});
-  }
+
 };
