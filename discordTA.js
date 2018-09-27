@@ -1,11 +1,9 @@
-var discordTA = {
-
-  getReactInstance: function(node) {
+function getReactInstance(node) {
   	if (!node) return null;
   	return node[Object.keys(node).find((key) => key.startsWith("__reactInternalInstance"))];
-  },
+};
 
-  getInstance: function(config) {
+function getInstance(config) {
   	if (config === undefined) return null;
   	if (!config.node || (!config.name && (!config.props || !Array.isArray(config.props)))) return null;
   	var inst = getReactInstance(config.node);
@@ -44,16 +42,16 @@ var discordTA = {
   		depth--;
   		return result;
   	}
-  },
+};
 
-  sendMessage: function(element){
+function sendMessage(element){
   		var press = new KeyboardEvent("keypress", {key: "Enter", code: "Enter", which: 13, keyCode: 13, bubbles: true});
   		Object.defineProperty(press, "keyCode", {value: 13});
   		Object.defineProperty(press, "which", {value: 13});
   		element.dispatchEvent(press);
-  },
+};
 
-  addSyntaxColor: function(element, message, language){
+function addSyntaxColor(element, message, language){
 
     message = "```" + language + "\n" + message + "\n```";
     getInstance({"node":element, "name":"ChannelTextAreaForm", "up":true}).setState({textValue:message});
