@@ -8,7 +8,7 @@ var discordTA = {
   getInstance: function(config) {
   	if (config === undefined) return null;
   	if (!config.node || (!config.name && (!config.props || !Array.isArray(config.props)))) return null;
-  	var inst = this.getReactInstance(config.node);
+  	var inst = getReactInstance(config.node);
   	if (!inst) return null;
   	var depth = -1;
   	var maxDepth = config.depth === undefined ? 15 : config.depth;
@@ -22,7 +22,7 @@ var discordTA = {
 
   	function searchOwnerInReact (ele) {
   		depth++;
-  		if (!ele || this.getReactInstance(ele) || depth > maxDepth || performance.now() - start > maxTime) result = null;
+  		if (!ele || getReactInstance(ele) || depth > maxDepth || performance.now() - start > maxTime) result = null;
   		else {
   			var keys = Object.getOwnPropertyNames(ele);
   			var result = null;
@@ -56,6 +56,6 @@ var discordTA = {
   addSyntaxColor: function(element, message, language){
 
     message = "```" + language + "\n" + message + "\n```";
-    this.getInstance({"node":element, "name":"ChannelTextAreaForm", "up":true}).setState({textValue:message});
+    getInstance({"node":element, "name":"ChannelTextAreaForm", "up":true}).setState({textValue:message});
   }
 };
